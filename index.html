@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JavaScript Example</title>
-  </head>
-  <body>
-    <h1>Click the button!</h1>
-    <button id="myButton">Click me!</button>
-    <p id="myText">This is some text.</p>
-    
-    <script>
-      // Get the button and text elements by their IDs
-      const button = document.getElementById("myButton");
-      const text = document.getElementById("myText");
-      
-      // Add a click event listener to the button
-      button.addEventListener("click", function() {
-        // Change the text of the text element
-        text.textContent = "The button was clicked!";
-      });
-    </script>
-  </body>
+    <head>
+        <title>JavaScript Example</title>
+    </head>
+    <body>
+        <h1>Click the button!</h1>
+        <button id="myButton">Click me!</button>
+        <p id="myText">This is some text.</p>
+
+        <script>
+            // Get the button and text elements by their IDs
+            const button = document.getElementById("myButton");
+            const text = document.getElementById("myText");
+
+            // Add a click event listener to the button
+            button.addEventListener("click", function() {
+                // Change the text of the text element
+                text.textContent = "The button was clicked!";
+            });
+        </script>
+    </body>
 </html>
+
