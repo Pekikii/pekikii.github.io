@@ -1,0 +1,31 @@
+
+> pekikii.github.io@0.1.0 predeploy
+> npm run build
+
+
+> pekikii.github.io@0.1.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  46.65 kB  build/static/js/main.e24a2d68.js
+  1.79 kB   build/static/js/787.e094c8cd.chunk.js
+  541 B     build/static/css/main.073c9b0a.css
+
+The project was built assuming it is hosted at /my-app/.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+
+> pekikii.github.io@0.1.0 deploy
+> gh-pages -b master -d build
+
+Published
