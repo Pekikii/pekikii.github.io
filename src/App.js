@@ -1,29 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import NavigationBar from './NavigationBar.js';
 import './App.css';
+import Home from './pages/Home';
+import Links from './pages/Links';
+import PDFs from './pages/PDFs';
 
 function App() {
+    const [activeTab, setActiveTab] = useState("home");
+  const handleSelect = (eventKey) => {
+    setActiveTab(eventKey);
+  };
     return (
         <div className="App">
-        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Edit <code>src/App.js</code> and save to reload.
-        TEST TEST
-        </p>
-        <p>
-        PULA MEA
-        </p>
-        <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-        >
-        Learn React
-        </a>
-        </header>
+        <NavigationBar activeTab={activeTab} handleSelect={handleSelect} />
+        {activeTab === "home" && <Home />}
+        {activeTab === "links" && <Links />}
+        {activeTab === "pdfs" && <PDFs />}
         </div>
-    );
-}
+    )
+    }
 
 export default App;
