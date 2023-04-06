@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { NavigationBar } from './NavigationBar';
@@ -8,6 +8,10 @@ import Links from './pages/Links';
 import PDFs from './pages/PDFs';
 
 function App() {
+    useEffect(() => {
+        document.title = "My New Title";
+    }, []);
+
     const [activeTab, setActiveTab] = useState("home");
 
     const handleSelect = (eventKey) => {
