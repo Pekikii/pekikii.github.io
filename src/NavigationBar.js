@@ -17,4 +17,4 @@ function NavigationBar({ activeTab, handleSelect }) {
   );
 }
 
-export default NavigationBar;
+export { NavigationBar };
