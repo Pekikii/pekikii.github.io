@@ -9,7 +9,7 @@ import PDFs from './pages/PDFs';
 
 function App() {
     useEffect(() => {
-        document.title = "My New Title";
+        document.title = "Pek";
     }, []);
 
     const [activeTab, setActiveTab] = useState("home");
