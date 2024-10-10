@@ -1,12 +1,14 @@
 .home-container {
     text-align: center;
-    margin-top: 20%;
+    margin-top: 10%;
     font-family: 'Great Vibes', cursive;
 }
 
 .fade-in {
     opacity: 0;
     animation: fadeIn 1s forwards;
+    font-size: 4rem;
+    line-height: 1.2;
 }
 
 @keyframes fadeIn {
