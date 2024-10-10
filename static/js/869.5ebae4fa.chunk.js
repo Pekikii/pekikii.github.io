@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpekikii_github_io=self.webpackChunkpekikii_github_io||[]).push([[869],{869:function(i,e,h){h.r(e);h(791);var s=h(184);e.default=function(){return(0,s.jsxs)("div",{children:[(0,s.jsx)("h1",{children:"Hey"}),(0,s.jsx)("p",{children:"This is the home page."})]})}}}]);
-//# sourceMappingURL=869.5ebae4fa.chunk.js.map
