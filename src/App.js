@@ -6,6 +6,7 @@ import './App.css';
 import Home from './pages/Home';
 import Links from './pages/Links';
 import PDFs from './pages/PDFs';
+import SecretSanta from './pages/SecretSanta'; // Adjust the path if necessary
 
 function App() {
     useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
         {activeTab === "home" && <Home />}
         {activeTab === "links" && <Links />}
         {activeTab === "pdfs" && <PDFs />}
+        {activeTab === "secretsanta" && <SecretSanta />}
         </div>
     )
 }
