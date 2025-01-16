@@ -2,6 +2,14 @@
     margin-left: 20px;
 }
 
+.navbar {
+    position: fixed;
+    top: 20px; /* Make sure the navbar starts just below the blinkies */
+    left: 0;
+    right: 0;
+    z-index: 1040; /* Adjust based on your needs */
+}
+
 .spinning-logo {
   animation: spin 10s linear infinite;
 }
