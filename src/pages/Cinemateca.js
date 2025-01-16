@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css';
+import './Cinemateca.css';
 
-const Home = ({ handleSelect }) => {
+const Cinemateca = ({ handleSelect }) => {
     const [messages, setMessages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -41,15 +41,8 @@ const Home = ({ handleSelect }) => {
                     {message}
                 </div>
             ))}
-            <div className="image-button-container" onClick={goToCinemateca}>
-                <img 
-                    src="/images.png" 
-                    alt="Go to Cinemateca" 
-                    className="image-button"
-                />
-            </div>
         </div>
     );
 };
 
-export default Home;
+export default Cinemateca;

@@ -1,7 +1,13 @@
 .home-container {
     text-align: center;
-    margin-top: 10%;
+    margin-top: 70px;
     font-family: 'Great Vibes', cursive;
+    background-image: url('../../public/cruelty-squad.gif');
+    background-size: auto;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100vh;
+    color: white;
 }
 
 .fade-in {
@@ -9,7 +15,23 @@
     animation: fadeIn 1s forwards;
     font-size: 4rem;
     line-height: 1.2;
+    color: white;
+    text-shadow: 1px 1px 2px #000, 0 0 25px #000, 0 0 5px #000;
 }
+
+.image-button-container {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.image-button {
+    width: 150px; /* Adjust size as necessary */
+    height: auto;
+}
+
 
 @keyframes fadeIn {
     to {
@@ -17,4 +39,17 @@
     }
 }
 
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    font-size: 4rem;
+    line-height: 1.2;
+    color: white;
+    text-shadow: 1px 1px 2px #000, 0 0 25px #000, 0 0 5px #000;
+}
 
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

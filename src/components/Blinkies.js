@@ -33,7 +33,6 @@ const blinkies = [
     'https://adriansblinkiecollection.neocities.org/k1.gif',
 ];
 
-// Shuffle function
 const shuffleArray = (array) => {
     let shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -48,8 +47,8 @@ const Blinkies = () => {
     const [shuffledBottomBlinkies, setShuffledBottomBlinkies] = useState([]);
 
     useEffect(() => {
-        setShuffledTopBlinkies(shuffleArray(blinkies)); // Shuffle for top blinkies
-        setShuffledBottomBlinkies(shuffleArray(blinkies)); // Shuffle for bottom blinkies
+        setShuffledTopBlinkies(shuffleArray(blinkies));
+        setShuffledBottomBlinkies(shuffleArray(blinkies));
     }, []);
 
     return (
@@ -68,9 +67,35 @@ const Blinkies = () => {
                         )
                     ))}
                 </div>
+                <div className="blinkies-wrapper">
+                    {shuffledTopBlinkies.map((link, index) => (
+                        link && (
+                            <a key={`duplicate-${index}`} href="https://blinkies.cafe" target="_blank" rel="noopener noreferrer">
+                                <img 
+                                    src={link} 
+                                    alt="blinkie" 
+                                    className="blinkies-badge"
+                                />
+                            </a>
+                        )
+                    ))}
+                </div>
             </div>
 
             <div className="blinkies-container-bottom">
+                <div className="blinkies-wrapper">
+                    {shuffledBottomBlinkies.map((link, index) => (
+                        link && (
+                            <a key={index} href="https://blinkies.cafe" target="_blank" rel="noopener noreferrer">
+                                <img 
+                                    src={link} 
+                                    alt="blinkie" 
+                                    className="blinkies-badge"
+                                />
+                            </a>
+                        )
+                    ))}
+                </div>
                 <div className="blinkies-wrapper">
                     {shuffledBottomBlinkies.map((link, index) => (
                         link && (

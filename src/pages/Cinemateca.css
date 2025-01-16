@@ -1,0 +1,12 @@
+.cinemateca-container {
+    text-align: center;
+    margin-top: 70px;
+    font-family: 'Great Vibes', cursive;
+    background-image: url('../../public/cruelty-squad.gif');
+    background-size: auto;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100vh;
+    color: white;
+}
+

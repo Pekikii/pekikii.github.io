@@ -1,40 +1,8 @@
-/* .blinkies-container { */
-/*     position: fixed; */
-/*     bottom: 0; */
-/*     left: 0; */
-/*     z-index: 0; */
-/*     width: 100vw; */
-/*     display: flex; */
-/*     flex-wrap: nowrap; */
-/*     justify-content: flex-start; */
-/* } */
-
-/* .blinkies-wrapper { */
-/*     display: flex; */
-/*     animation: scrollBlinkies 40s linear infinite; */
-/*     flex-shrink: 0; */
-/* } */
-
-/* .blinkies-badge { */
-/*     width: 150px; */
-/*     height: auto; */
-/* } */
-
-/* @keyframes scrollBlinkies { */
-/*     0% { */
-/*         transform: translateX(0); */
-/*     } */
-/*     100% { */
-/*         transform: translateX(-100%); */
-/*     } */
-/* } */
-
-/* For the top blinkies container */
 .blinkies-container-top {
     position: fixed;
-    top: 0; /* Position at the top */
+    top: 0;
     left: 0;
-    z-index: 1050; /* Ensure it stays above navbar */
+    z-index: 1050;
     width: 100vw;
     display: flex;
     flex-wrap: nowrap;
@@ -43,9 +11,9 @@
 
 .blinkies-container-bottom {
     position: fixed;
-    bottom: 0; /* Position at the bottom */
+    bottom: 0;
     left: 0;
-    z-index: 1050; /* Ensure it stays above other content */
+    z-index: 1050;
     width: 100vw;
     display: flex;
     flex-wrap: nowrap;

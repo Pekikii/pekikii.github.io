@@ -3,12 +3,33 @@
 }
 
 .navbar {
+    background-image: url('../../public/green-repeat-pattern.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
     position: fixed;
-    top: 20px; /* Make sure the navbar starts just below the blinkies */
+    top: 20px;
     left: 0;
     right: 0;
-    z-index: 1040; /* Adjust based on your needs */
+    z-index: 1040;
 }
+
+.navbar .nav-link {
+    position: relative;
+    color: white !important;
+    text-shadow: 1px 1px 2px #000, 0 0 25px #000, 0 0 5px #000;
+}
+
+.navbar-brand img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+    transform: rotate(360deg);
+}
+
 
 .spinning-logo {
   animation: spin 10s linear infinite;

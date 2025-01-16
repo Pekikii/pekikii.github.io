@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { NavigationBar } from './components/NavigationBar';
 import './App.css';
 import Home from './pages/Home';
-import Blinkies from './components/Blinkies.js';
+import Cinemateca from './pages/Cinemateca';
+import Blinkies from './components/Blinkies';
 
 function App() {
     useEffect(() => {
@@ -19,9 +19,11 @@ function App() {
 
     return (
         <div className="App">
-        <NavigationBar activeTab={activeTab} handleSelect={handleSelect} />
-        {activeTab === "home" && <Home />}
-        <Blinkies />
+            <Blinkies />
+            <NavigationBar activeTab={activeTab} handleSelect={handleSelect} />
+            {activeTab === "home" && <Home handleSelect={handleSelect} />}
+            {activeTab === "cinemateca" && <Cinemateca />}
+            <Blinkies />
         </div>
     );
 }
