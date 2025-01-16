@@ -4,9 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavigationBar } from './NavigationBar';
 import './App.css';
 import Home from './pages/Home';
-import Links from './pages/Links';
-import PDFs from './pages/PDFs';
-import SecretSanta from './pages/SecretSanta';
 
 function App() {
     useEffect(() => {
