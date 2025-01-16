@@ -21,11 +21,11 @@ const Home = () => {
             return () => clearTimeout(timer);
         } else {
             // Redirect to Google after the last message
-            const redirectTimer = setTimeout(() => {
-                window.location.href = "https://www.google.com";
-            }, 2000); // Adjust the delay to match the last message display time
+            // const redirectTimer = setTimeout(() => {
+            //     window.location.href = "https://www.google.com";
+            // }, 2000); // Adjust the delay to match the last message display time
 
-            return () => clearTimeout(redirectTimer);
+            // return () => clearTimeout(redirectTimer);
         }
     }, [currentIndex]);
 
@@ -36,6 +36,8 @@ const Home = () => {
                     {message}
                 </div>
             ))}
+            
+            {/* Blinkies Cafe Badge */}
         </div>
     );
 };

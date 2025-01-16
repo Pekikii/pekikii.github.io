@@ -1,0 +1,30 @@
+.blinkies-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100vw;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.blinkies-wrapper {
+    display: flex;
+    animation: scrollBlinkies 40s linear infinite;
+    flex-shrink: 0;
+}
+
+.blinkies-badge {
+    width: 150px;
+    height: auto;
+}
+
+@keyframes scrollBlinkies {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

@@ -1,0 +1,17 @@
+.navbar-brand {
+    margin-left: 20px;
+}
+
+.spinning-logo {
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
