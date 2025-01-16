@@ -6,7 +6,7 @@ import './App.css';
 import Home from './pages/Home';
 import Links from './pages/Links';
 import PDFs from './pages/PDFs';
-import SecretSanta from './pages/SecretSanta'; // Adjust the path if necessary
+import SecretSanta from './pages/SecretSanta';
 
 function App() {
     useEffect(() => {
@@ -23,9 +23,6 @@ function App() {
         <div className="App">
         <NavigationBar activeTab={activeTab} handleSelect={handleSelect} />
         {activeTab === "home" && <Home />}
-        {activeTab === "links" && <Links />}
-        {activeTab === "pdfs" && <PDFs />}
-        {activeTab === "secretsanta" && <SecretSanta />}
         </div>
     )
 }
