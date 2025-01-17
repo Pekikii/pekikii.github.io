@@ -3,9 +3,9 @@
 }
 
 .navbar {
-    background-image: url('../../public/green-repeat-pattern.jpg');
+    background-image: url('../../public/ezgif-2-e74b65753b.gif'), url('../../public/blue-repeat-pattern.png');
     background-size: cover;
-    background-position: center;
+    background-position: center calc(0% - 10%), center;
     background-repeat: no-repeat;
     padding: 0;
     position: fixed;
@@ -13,6 +13,22 @@
     left: 0;
     right: 0;
     z-index: 1040;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/ezgif-2-e74b65753b.gif');
+    background-size: cover;
+    background-position: center calc(0% - 10%);
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+    z-index: -1; /* Ensure the rotated image is behind the navbar */
 }
 
 .navbar .nav-link {

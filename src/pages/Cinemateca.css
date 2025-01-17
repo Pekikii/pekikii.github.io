@@ -1,7 +1,23 @@
+@font-face {
+    font-family: 'SwampWitch';
+    src: url('../../fonts/Swamp Witch.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MingLiu';
+    src: url('../../fonts/mingliu.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .cinemateca-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     margin-top: 70px;
-    font-family: 'Great Vibes', cursive;
     background-image: url('../../public/cruelty-squad.gif');
     background-size: auto;
     background-position: center;
@@ -10,3 +26,50 @@
     color: white;
 }
 
+.movie-title {
+    font-size: 1rem;
+    font-family: 'SwampWitch', cursive;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.image-frame-container {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.image-frame-container img:first-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
+}
+
+.image-frame-container img:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.bottom-right-image {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: auto;
+}

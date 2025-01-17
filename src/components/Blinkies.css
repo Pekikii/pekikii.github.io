@@ -1,29 +1,26 @@
-.blinkies-container-top {
+.blinkies-container-top, .blinkies-container-bottom {
     position: fixed;
-    top: 0;
     left: 0;
     z-index: 1050;
     width: 100vw;
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    padding: 0;
+}
+
+.blinkies-container-top {
+    top: -4px;
 }
 
 .blinkies-container-bottom {
-    position: fixed;
     bottom: 0;
-    left: 0;
-    z-index: 1050;
-    width: 100vw;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
 }
 
 .blinkies-wrapper {
     display: flex;
-    animation: scrollBlinkies 40s linear infinite;
     flex-shrink: 0;
+    animation: scrollBlinkies 100s linear infinite;
 }
 
 .blinkies-badge {
@@ -36,6 +33,6 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 }

@@ -2,21 +2,12 @@
     text-align: center;
     margin-top: 70px;
     font-family: 'Great Vibes', cursive;
-    background-image: url('../../public/cruelty-squad.gif');
+    background-image: url('../../public/blue-cruelty-squad.png');
     background-size: auto;
     background-position: center;
     background-repeat: repeat;
     height: 100vh;
     color: white;
-}
-
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-    font-size: 4rem;
-    line-height: 1.2;
-    color: white;
-    text-shadow: 1px 1px 2px #000, 0 0 25px #000, 0 0 5px #000;
 }
 
 .image-button-container {
@@ -28,15 +19,8 @@
 }
 
 .image-button {
-    width: 150px; /* Adjust size as necessary */
+    width: 150px;
     height: auto;
-}
-
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
 }
 
 .fade-in {

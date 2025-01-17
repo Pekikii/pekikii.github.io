@@ -17,6 +17,7 @@ function NavigationBar({ activeTab, handleSelect }) {
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav activeKey={activeTab} onSelect={handleSelect}>
         <Nav.Link eventKey="home">Home</Nav.Link>
+        <Nav.Link eventKey="cinemateca">Cinemateca</Nav.Link>
         </Nav>
         </Navbar.Collapse>
         </Navbar>
