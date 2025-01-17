@@ -15,7 +15,7 @@ const Cinemateca = () => {
                 <img src={imageUrl} alt="Showcase" />
             </div>
             
-            <img src="/electricskull.gif" className="bottom-right-image" />k
+            <img src="/electricskull.gif" className="bottom-right-image" />
         </div>
     );
 };
