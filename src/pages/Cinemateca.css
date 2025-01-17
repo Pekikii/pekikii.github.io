@@ -27,8 +27,8 @@
 }
 
 .movie-title {
-    font-size: 1rem;
-    font-family: 'SwampWitch', cursive;
+    font-size: 2rem;
+    font-family: 'MingLiu', cursive;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     color: white;
     margin-bottom: 20px;
