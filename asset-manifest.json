@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.e27688ea.css",
-    "main.js": "/static/js/main.2a2867dd.js",
+    "main.css": "/static/css/main.a0fc549f.css",
+    "main.js": "/static/js/main.c87a36eb.js",
     "static/js/453.056557b9.chunk.js": "/static/js/453.056557b9.chunk.js",
-    "static/media/green-repeat-pattern.jpg": "/static/media/green-repeat-pattern.f04c7f2bdfe6b4c08036.jpg",
+    "static/media/mingliu.TTF": "/static/media/mingliu.cd8446fcb6ac2596dda2.TTF",
+    "static/media/blue-repeat-pattern.png": "/static/media/blue-repeat-pattern.2b9c3fa5592859affcd4.png",
     "static/media/cruelty-squad.gif": "/static/media/cruelty-squad.db835eeadc46b4e12d7a.gif",
-    "static/media/Divine_Light_Border.webp": "/static/media/Divine_Light_Border.4aae9dc02b111b8f46ac.webp",
+    "static/media/blue-cruelty-squad.png": "/static/media/blue-cruelty-squad.53e360571fde9612fadb.png",
+    "static/media/Swamp Witch.ttf": "/static/media/Swamp Witch.5640328cefd20384492a.ttf",
+    "static/media/ezgif-2-e74b65753b.gif": "/static/media/ezgif-2-e74b65753b.95abd5e3cf9eee182e02.gif",
     "index.html": "/index.html",
-    "main.e27688ea.css.map": "/static/css/main.e27688ea.css.map",
-    "main.2a2867dd.js.map": "/static/js/main.2a2867dd.js.map",
+    "main.a0fc549f.css.map": "/static/css/main.a0fc549f.css.map",
+    "main.c87a36eb.js.map": "/static/js/main.c87a36eb.js.map",
     "453.056557b9.chunk.js.map": "/static/js/453.056557b9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e27688ea.css",
-    "static/js/main.2a2867dd.js"
+    "static/css/main.a0fc549f.css",
+    "static/js/main.c87a36eb.js"
   ]
 }
