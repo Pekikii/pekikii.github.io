@@ -5,15 +5,14 @@ const Home = ({ handleSelect }) => {
     const [messages, setMessages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const fadeInMessages = [
-        "Hello.",
-        "Thank you for your attention.",
-        "Goodbye."
-    ];
-
-
     useEffect(() => {
+        const fadeInMessages = [
+            "Hello.",
+            "Thank you for your attention.",
+            "Goodbye."
+        ];
         if (currentIndex < fadeInMessages.length) {
+
             const timer = setTimeout(() => {
                 setMessages((prev) => [...prev, fadeInMessages[currentIndex]]);
                 setCurrentIndex((prev) => prev + 1);
@@ -33,6 +32,9 @@ const Home = ({ handleSelect }) => {
     const goToCinemateca = () => {
         handleSelect("cinemateca");
     };
+    const goToArtikdle = () => {
+        handleSelect("artikdle");
+    };
 
     return (
         <div className="home-container">
@@ -41,10 +43,10 @@ const Home = ({ handleSelect }) => {
                     {message}
                 </div>
             ))}
-            <div className="image-button-container" onClick={goToCinemateca}>
+            <div className="image-button-container" onClick={goToArtikdle}>
                 <img 
-                    src="/images.png" 
-                    alt="Go to Cinemateca" 
+                    src="/dancing-skeleton-on-fire.gif" 
+                    alt="Go to Artikdle" 
                     className="image-button"
                 />
             </div>
