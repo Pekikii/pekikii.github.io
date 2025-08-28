@@ -1,27 +1,32 @@
 h1 {
     text-align: left;
     font-size: 3em;
-    color: #333;
+    color: #eee;
 }
 
-body{
+body {
     background-image: url('../../public/artikdle-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #121212; /* fallback dark bg */
+    color: #ddd;
 }
 
 .artikdle-container {
-    background-color: white;  /* solid background */
-    padding: 30px 40px;       /* some spacing inside */
-    border-radius: 12px;      /* rounded corners for nice look */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* subtle shadow */
+    background-color: #1e1e1e; /* dark container bg */
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* stronger shadow for contrast */
     max-width: 600px;
     margin: 80px auto 0 auto;
 }
 
 .quiz-content-inside-frame {
-    background-color: white;
+    background-color: #2a2a2a;
     padding: 20px 30px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .subtitle-timer-bar {
@@ -34,7 +39,7 @@ body{
 .subtitle {
     font-size: 1.4em;
     font-weight: 500;
-    color: #666;
+    color: #bbb;
     text-align: right;
 }
 
@@ -45,6 +50,7 @@ body{
     text-align: right;
     margin-bottom: 20px;
     font-family: 'Arial Black', Arial, sans-serif;
+    color: #90caf9; /* light blue accent */
 }
 
 .quiz-box {
@@ -57,27 +63,42 @@ input[type="text"] {
     padding: 10px;
     font-size: 1em;
     margin-bottom: 10px;
+    background-color: #333;
+    border: 1px solid #555;
+    color: #eee;
+    border-radius: 6px;
+}
+
+input[type="text"]::placeholder {
+    color: #999;
 }
 
 button {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: #4caf50; /* keep green, looks good on dark */
     color: white;
     border: none;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #388e3c;
 }
 
 .feedback {
     margin-top: 10px;
     font-weight: bold;
+    color: #ddd;
 }
 
 .score {
     margin-top: 20px;
     text-align: center;
     font-size: 1.2em;
+    color: #eee;
 }
 
 .quiz-row {
@@ -93,14 +114,17 @@ button {
     padding: 10px 12px;
     font-size: 1.5em;
     font-family: inherit;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 6px;
     text-align: center;
+    background-color: #333;
+    color: #eee;
 }
 
 .quiz-row input:disabled {
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #222;
+    color: #777;
+    border-color: #444;
 }
 
 .quiz-word {
@@ -108,21 +132,23 @@ button {
     font-size: 1.8em;
     font-weight: 600;
     text-align: center;
+    color: #eee;
 }
 
 .correct {
-    border: 2px solid green;
-    background-color: #e6ffe6;
+    border: 2px solid #66bb6a;
+    background-color: #2e7d32; /* dark green */
+    color: #c8e6c9;
 }
 
 .incorrect {
-    border: 2px solid red;
-    background-color: #ffe6e6;
+    border: 2px solid #ef5350;
+    background-color: #b71c1c; /* dark red */
+    color: #ffcdd2;
 }
 
 .countdown {
     margin-top: 30px;
     font-size: 1.2em;
-    color: #444;
+    color: #bbb;
 }
-
