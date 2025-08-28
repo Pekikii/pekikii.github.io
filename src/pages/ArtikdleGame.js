@@ -45,41 +45,64 @@ function getTodayKey() {
     const mm = String(now.getMonth() + 1).padStart(2, '0');
     const dd = String(now.getDate()).padStart(2, '0');
     return `quiz-done-${yyyy}-${mm}-${dd}`;
+
 }
+
+const ElapsedTimeDisplay = ({ startTime, submitted }) => {
+    const [time, setTime] = useState(0);
+    const intervalRef = useRef(null);
+
+    useEffect(() => {
+        if (!startTime || submitted) return;
+
+        const update = () => {
+            const newElapsed = Math.floor((Date.now() - startTime) / 1000);
+            setTime(newElapsed);
+        };
+
+        update();
+        intervalRef.current = setInterval(update, 1000);
+
+        return () => clearInterval(intervalRef.current);
+    }, [startTime, submitted]);
+
+    return <span>{formatTime(time)}</span>;
+};
 
 const ArtikdleGame = () => {
     const [quizEntries, setQuizEntries] = useState([]);
     const [userAnswers, setUserAnswers] = useState({});
     const [startTime, setStartTime] = useState(null);
-    const [elapsedTime, setElapsedTime] = useState(0);
+    const [finalTime, setFinalTime] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(0);
     const [completedData, setCompletedData] = useState(null);
-    const timerRef = useRef(null);
+    useEffect(() => {
+        console.log('quizEntries changed:', quizEntries);
+    }, [quizEntries]);
+    console.log('ArtikdleGame render');
 
     useEffect(() => {
+        const allEntries = parseCSV(csvData);
+        const seed = getSeedFromDate();
+        const selectedIndices = getDeterministicRandomIndices(allEntries.length, 5, seed);
+        const selected = selectedIndices.map(i => allEntries[i]);
+
+        setQuizEntries(selected);
+
         const todayKey = getTodayKey();
         const stored = localStorage.getItem(todayKey);
         if (stored) {
-            setCompletedData(JSON.parse(stored));
+            const data = JSON.parse(stored);
+            setCompletedData(data);
+            setScore(data.score);
+            setFinalTime(data.time);
+            setSubmitted(true);
         } else {
-            const allEntries = parseCSV(csvData);
-            const seed = getSeedFromDate();
-            const selectedIndices = getDeterministicRandomIndices(allEntries.length, 5, seed);
-            const selected = selectedIndices.map(i => allEntries[i]);
-            setQuizEntries(selected);
             setStartTime(Date.now());
         }
     }, []);
 
-    useEffect(() => {
-        if (startTime && !submitted) {
-            timerRef.current = setInterval(() => {
-                setElapsedTime(Math.floor((Date.now() - startTime) / 1000));
-            }, 1000);
-        }
-        return () => clearInterval(timerRef.current);
-    }, [startTime, submitted]);
 
     const mapUserInput = (input) => {
         const normalized = (input || '').trim().toLowerCase();
@@ -96,9 +119,12 @@ const ArtikdleGame = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        clearInterval(timerRef.current);
-        let correct = 0;
 
+        const endTime = Date.now();
+        const totalElapsed = Math.floor((endTime - startTime) / 1000);
+        setFinalTime(totalElapsed);
+
+        let correct = 0;
         quizEntries.forEach((entry, index) => {
             const answer = mapUserInput(userAnswers[index] || '');
             if (answer === entry.art.toLowerCase()) {
@@ -113,7 +139,7 @@ const ArtikdleGame = () => {
         localStorage.setItem(todayKey, JSON.stringify({
             score: correct,
             total: quizEntries.length,
-            time: elapsedTime
+            time: totalElapsed
         }));
     };
 
@@ -172,8 +198,11 @@ const ArtikdleGame = () => {
                                 : <div key={index}>❌ "{entry.word}": Die richtige Antwort ist "{correctWord}"</div>;
                         })}
                     </div>
-                    <p className="score">Du hast {score} von {quizEntries.length} richtig in {formatTime(elapsedTime)}.</p>
-                </>
+                    <p className="score">
+                        Du hast {score} von {quizEntries.length} richtig
+                        {finalTime !== null && ` in ${formatTime(finalTime)}.`}
+                    </p>
+                        </>
             )}
         </form>
     );
@@ -184,17 +213,22 @@ const ArtikdleGame = () => {
                 <h1>Artikdle</h1>
                 <div className="subtitle-timer-bar">
                     <div className="subtitle">der, die, das, oder Plural?</div>
+                    {!submitted && !completedData && (
                     <div className="timer">
-                        {completedData
-                            ? formatTime(completedData.time)
-                            : formatTime(elapsedTime)}
+                    {completedData ? (
+                        formatTime(completedData.time)
+                    ) : (
+                        <ElapsedTimeDisplay startTime={startTime} submitted={submitted} />
+                    )}
                     </div>
+                    )}
                 </div>
                 {completedData ? (
                     <div className="quiz-box">
                         <h2>✅ Du hast das heutige Quiz bereits abgeschlossen!</h2>
                         <p className="score">
-                            Punktzahl: {completedData.score} / {completedData.total}
+                          Du hast {score} von {quizEntries.length} richtig
+                          {finalTime !== null && ` in ${formatTime(finalTime)}.`}
                         </p>
                         <Countdown />
                     </div>
