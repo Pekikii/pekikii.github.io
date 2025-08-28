@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ArtikdleGame.css';
-import csvData from './ArtikdleData'; // adjust path as needed
+import csvData from './ArtikdleData';
 
 function parseCSV(data) {
     const lines = data.trim().split('\n');
@@ -69,6 +69,92 @@ const ElapsedTimeDisplay = ({ startTime, submitted }) => {
     return <span>{formatTime(time)}</span>;
 };
 
+const QuizContent = ({
+    quizEntries,
+    userAnswers,
+    handleChange,
+    submitted,
+    mapUserInput,
+    score,
+    finalTime,
+    formatTime,
+    handleSubmit,
+    inputRefs
+}) => {
+
+
+    const handleKeyDown = (e, index) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (index < quizEntries.length - 1) {
+                inputRefs.current[index + 1]?.focus();
+            } else {
+                handleSubmit(e);
+            }
+        } else if (e.key === 'Backspace' && (userAnswers[index] === undefined || userAnswers[index] === '')) {
+            if (index > 0) {
+                e.preventDefault();
+                inputRefs.current[index - 1]?.focus();
+            }
+        }
+    };
+
+    return (
+  <form className="quiz-box" onSubmit={handleSubmit}>
+    {quizEntries.map((entry, index) => (
+      <div className="quiz-row" key={`${entry.word}-${index}`}>
+        <input
+          type="text"
+          value={userAnswers[index] || ''}
+          onChange={(e) => handleChange(index, e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e, index)}   // <-- attach here!
+          disabled={submitted}
+          className={
+            submitted
+              ? mapUserInput(userAnswers[index]) === entry.art.toLowerCase()
+                ? 'correct'
+                : 'incorrect'
+              : ''
+          }
+        ref={el => inputRefs.current[index] = el}
+        />
+        <span className="quiz-word">{entry.word}</span>
+      </div>
+    ))}
+    {!submitted && <button type="submit">Antworten abschicken</button>}
+    {submitted && (
+      <>
+        <div className="feedback">
+          {quizEntries.map((entry, index) => {
+            const answer = mapUserInput(userAnswers[index]);
+            const correct = entry.art.toLowerCase();
+            const correctWord =
+              correct === 'm'
+                ? 'der'
+                : correct === 'f'
+                ? 'die'
+                : correct === 'n'
+                ? 'das'
+                : 'Plural';
+            return answer === correct ? (
+              <div key={index}>✅ "{entry.word}": Richtig!</div>
+            ) : (
+              <div key={index}>
+                ❌ "{entry.word}": Die richtige Antwort ist "{correctWord}"
+              </div>
+            );
+          })}
+        </div>
+        <p className="score">
+          Du hast {score} von {quizEntries.length} richtig
+          {finalTime !== null && ` in ${formatTime(finalTime)}.`}
+        </p>
+      </>
+    )}
+  </form>
+);
+}
+
 const ArtikdleGame = () => {
     const [quizEntries, setQuizEntries] = useState([]);
     const [userAnswers, setUserAnswers] = useState({});
@@ -77,10 +163,12 @@ const ArtikdleGame = () => {
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(0);
     const [completedData, setCompletedData] = useState(null);
+
+    const inputRefs = useRef([]);
+
     useEffect(() => {
-        console.log('quizEntries changed:', quizEntries);
+        inputRefs.current = inputRefs.current.slice(0, quizEntries.length);
     }, [quizEntries]);
-    console.log('ArtikdleGame render');
 
     useEffect(() => {
         const allEntries = parseCSV(csvData);
@@ -164,48 +252,6 @@ const ArtikdleGame = () => {
         return <p className="countdown">⏳ Nächstes Quiz in: {timeLeft}</p>;
     };
 
-    const QuizContent = () => (
-
-        <form className="quiz-box" onSubmit={handleSubmit}>
-            {quizEntries.map((entry, index) => (
-                <div className="quiz-row" key={`${entry.word}-${index}`}>
-                    <input
-                        type="text"
-                        value={userAnswers[index] || ''}
-                        onChange={(e) => handleChange(index, e.target.value)}
-                        disabled={submitted}
-                        className={
-                            submitted
-                                ? mapUserInput(userAnswers[index]) === entry.art.toLowerCase()
-                                    ? 'correct'
-                                    : 'incorrect'
-                                : ''
-                        }
-                    />
-                    <span className="quiz-word">{entry.word}</span>
-                </div>
-            ))}
-            {!submitted && <button type="submit">Antworten abschicken</button>}
-            {submitted && (
-                <>
-                    <div className="feedback">
-                        {quizEntries.map((entry, index) => {
-                            const answer = mapUserInput(userAnswers[index]);
-                            const correct = entry.art.toLowerCase();
-                            const correctWord = correct === 'm' ? 'der' : correct === 'f' ? 'die' : correct === 'n' ? 'das' : 'Plural';
-                            return answer === correct
-                                ? <div key={index}>✅ "{entry.word}": Richtig!</div>
-                                : <div key={index}>❌ "{entry.word}": Die richtige Antwort ist "{correctWord}"</div>;
-                        })}
-                    </div>
-                    <p className="score">
-                        Du hast {score} von {quizEntries.length} richtig
-                        {finalTime !== null && ` in ${formatTime(finalTime)}.`}
-                    </p>
-                        </>
-            )}
-        </form>
-    );
 
     return (
         <div className="artikdle-container">
@@ -233,7 +279,18 @@ const ArtikdleGame = () => {
                         <Countdown />
                     </div>
                     ) : (
-                        <QuizContent />
+                        <QuizContent
+                        quizEntries={quizEntries}
+                        userAnswers={userAnswers}
+                        handleChange={handleChange}
+                        submitted={submitted}
+                        mapUserInput={mapUserInput}
+                        score={score}
+                        finalTime={finalTime}
+                        formatTime={formatTime}
+                        handleSubmit={handleSubmit}
+                        inputRefs={inputRefs}
+                        />
                     )}
                 </div>
         </div>
