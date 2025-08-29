@@ -11,27 +11,25 @@ const Home = ({ handleSelect }) => {
             "Thank you for your attention.",
             "Goodbye."
         ];
-        if (currentIndex < fadeInMessages.length) {
 
+        if (currentIndex < fadeInMessages.length) {
             const timer = setTimeout(() => {
                 setMessages((prev) => [...prev, fadeInMessages[currentIndex]]);
                 setCurrentIndex((prev) => prev + 1);
-            }, 2000); // Show each message for 2 seconds (adjust as needed)
+            }, 2000);
 
             return () => clearTimeout(timer);
-        } else {
-            // Redirect to Google after the last message
-            const redirectTimer = setTimeout(() => {
-                window.location.href = "https://www.google.com";
-            }, 2000); // Adjust the delay to match the last message display time
-
-            return () => clearTimeout(redirectTimer);
         }
     }, [currentIndex]);
+
+    const goToGoogle = () => {
+        window.location.href = "https://www.google.com";
+    };
 
     const goToCinemateca = () => {
         handleSelect("cinemateca");
     };
+
     const goToArtikdle = () => {
         handleSelect("artikdle");
     };
@@ -39,8 +37,14 @@ const Home = ({ handleSelect }) => {
     return (
         <div className="home-container">
             {messages.map((message, index) => (
-                <div key={index} className={`fade-in`}>
-                    {message}
+                <div key={index} className="fade-in">
+                    {message === "Goodbye." ? (
+                        <button onClick={goToGoogle} className="goodbye-button">
+                            Goodbye.
+                        </button>
+                    ) : (
+                        message
+                    )}
                 </div>
             ))}
             <div className="image-button-container" onClick={goToArtikdle}>

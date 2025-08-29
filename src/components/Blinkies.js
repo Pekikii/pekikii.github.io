@@ -34,7 +34,6 @@ const blinkies = [
     'https://plasticdino.neocities.org/blinkie/thegoldenage.gif',
     'https://plasticdino.neocities.org/blinkie/b29.gif',
     'https://plasticdino.neocities.org/blinkie/rawr.webp',
-    'https://plasticdino.neocities.org/blinkie/mother%20fucker.gif',
     'https://plasticdino.neocities.org/blinkie/y8xagk.gif',
     'https://plasticdino.neocities.org/blinkie/ladybugs3.gif',
     'https://decohoard.carrd.co/assets/images/gallery111/944d560e.gif?v=e0827b7e',
@@ -64,7 +63,7 @@ return (
             <div className="blinkies-wrapper">
                 {shuffledTopBlinkies.concat(shuffledTopBlinkies).map((link, index) => (
                     link && (
-                        <a key={index} href="https://blinkies.cafe" target="_blank" rel="noopener noreferrer">
+                        <a key={index} target="_blank" rel="noopener noreferrer">
                             <img 
                                 src={link} 
                                 alt="blinkie" 
@@ -80,7 +79,7 @@ return (
             <div className="blinkies-wrapper">
                 {shuffledBottomBlinkies.concat(shuffledBottomBlinkies).map((link, index) => (
                     link && (
-                        <a key={index} href="https://blinkies.cafe" target="_blank" rel="noopener noreferrer">
+                        <a key={index} target="_blank" rel="noopener noreferrer">
                             <img 
                                 src={link} 
                                 alt="blinkie" 
